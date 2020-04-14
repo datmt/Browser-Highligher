@@ -1,10 +1,20 @@
-$(function(){
-    var delta = 500; //500ms
-    var commandKey = [];
 
+$(function(){
+    
+    var delta = 500; //500ms
+    var clickCount = 0;
     $(document).on('keydown', function(e){
         if (e.ctrlKey || e.metaKey)
         {
+            clickCount++;
+
+            if (clickCount < 2)
+            {
+                console.log('command clicked', clickCount);
+                
+                return;
+            }
+
             console.log('command key cliekced');
             var node = window.getSelection();
 
@@ -21,7 +31,8 @@ $(function(){
             //create the highlighted text
             var textNode = document.createElement('span');
             textNode.setAttribute('class', 'high-note');
-            textNode.appendChild(document.createTextNode(selectedText.trim()));
+            selectedText = selectedText.replace(/^\n|\n$/g, '');
+            textNode.appendChild(document.createTextNode(selectedText));
             range.insertNode(textNode);
 
 
@@ -31,5 +42,9 @@ $(function(){
             // console.log('my selection node is: ', window.getSelection().anchorNode);
         }
     });
+
+    setInterval(function(){
+        clickCount = 0;
+    }, delta);
 
 });
