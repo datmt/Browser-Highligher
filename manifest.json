@@ -1,7 +1,8 @@
 {
     "manifest_version": 2,
     "name": "datmt Highlighter",
-    "version": "0.1",
+    "version": "0.0.0.1",
+    "author": "datmt",
     "content_scripts": [
       {
         "matches": [
@@ -10,5 +11,12 @@
         "js": ["./js/jquery-3.5.0.min.js", "./js/content.js"],
         "css" : ["/css/styles.css"]
       }
-    ]
+    ],
+    "permissions": ["activeTab"],
+    "icons": {
+      "16": "./images/icon-16.png",
+      "48": "./images/icon-48.png",
+      "128": "./images/icon-128.png"
+    }
+    
   }

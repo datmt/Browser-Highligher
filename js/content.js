@@ -1,12 +1,15 @@
 
 $(function(){
     
-    var delta = 500; //500ms
+    var delta = 1500; //500ms
     var clickCount = 0;
     $(document).on('keydown', function(e){
+        console.log('key code is: ', e.keyCode);
         if (e.ctrlKey || e.metaKey)
         {
-            clickCount++;
+            console.log('meta key clicked: ');
+            if (e.keyCode === 17 || e.keyCode === 91) //only add on control key
+                clickCount++;
 
             if (clickCount < 2)
             {
@@ -15,7 +18,7 @@ $(function(){
                 return;
             }
 
-            console.log('command key cliekced');
+            console.log('start highlighting ');
             var node = window.getSelection();
 
             //get the selected text
